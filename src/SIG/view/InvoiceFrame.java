@@ -3,6 +3,7 @@ package SIG.view;
 
 import SIG.controller.Controller;
 import SIG.controller.TableAction;
+import SIG.model.FileOperations;
 import SIG.model.ShowInvTabel;
 import SIG.model.sigHeader;
 import SIG.model.sigItem;
@@ -243,7 +244,15 @@ public class InvoiceFrame extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 InvoiceFrame frame= new InvoiceFrame();
+                
                 frame.setVisible(true);
+                FileOperations fileOperations = new FileOperations(frame);
+                ArrayList<sigHeader> inv= fileOperations.readFile();
+                frame.setInvoices(inv);
+                ShowInvTabel invoiceTable = new ShowInvTabel(inv);
+                frame.setHeaderTabel(invoiceTable);
+                frame.getTableInvoiceHeader().setModel(invoiceTable);
+                frame.getHeaderTabel().fireTableDataChanged();
 
             }
         });
