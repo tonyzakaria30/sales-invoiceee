@@ -63,6 +63,8 @@ public class Controller implements ActionListener, ListSelectionListener {
                 
             case "Open File":
                 //create an obk from fileoperations and return a list of onvoices then updates the to tables
+                //the below line cause if the user wants to read the files after booting
+                frame.setInvoices(null);
                 FileOperations fileOperations = new FileOperations(frame);
                 ArrayList<sigHeader> inv= fileOperations.readFile();
                 frame.setInvoices(inv);
