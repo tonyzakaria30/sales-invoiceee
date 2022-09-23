@@ -45,7 +45,8 @@ public class FileOperations {
         int result;
         ArrayList<sigHeader> invArray = new ArrayList<>();
   
-            
+            JOptionPane.showMessageDialog(frame, "Please insert Headers File then Lines File"); 
+
             JFileChooser file = new JFileChooser();
             do{//do not close till the user chooses the right file
                result = file.showOpenDialog(frame);
