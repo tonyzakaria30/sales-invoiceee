@@ -157,9 +157,7 @@ public class FileOperations {
         create two strings to stroe in them the final data as string data
         */
        //Header file name
-        String headerPath=null;
-    //items file name
-        String itemPath=null;
+
         String invoices = "";
         String items = "";
         File headerFile;
@@ -180,8 +178,8 @@ public class FileOperations {
             }
         }
         //open two file chooser to save these two strings inside the desired files if they are not found
-        if(headerPath == null && itemPath==null){
-        JOptionPane.showMessageDialog(frame, "Files are Not Found Please Insert New Files");
+        
+        JOptionPane.showMessageDialog(frame, "Kindly choose the Headers file then Lines file");
         JFileChooser file = new  JFileChooser();
         do{//donot break till the user choose the right format
         result = file.showSaveDialog(frame);
@@ -220,7 +218,7 @@ public class FileOperations {
                 FileWriter lineFileWriter = null;
                     try {
                         lineFileWriter = new FileWriter(lineFile);
-                        lineFileWriter.write(invoices);
+                        lineFileWriter.write(items);
                         lineFileWriter.flush();
                         break;
                     } catch (IOException ex) {
@@ -239,33 +237,7 @@ public class FileOperations {
                  JOptionPane.showMessageDialog(frame, "Wrong Lines File Format");   
             }
         }while(true);
-
-          
-                
-  
-}
-        else{
-            FileWriter headFileWriter = null;
-            try {
-                headerFile = new File(headerPath);
-                lineFile = new File(itemPath);
-                headFileWriter = new FileWriter(headerFile);
-                headFileWriter.write(invoices);
-                headFileWriter.flush();
-                headFileWriter.close();
-                FileWriter lineFileWriter = new FileWriter(lineFile);
-                lineFileWriter.write(items);
-                lineFileWriter.flush();
-                lineFileWriter.close();
-            } catch (IOException ex) {
-                Logger.getLogger(FileOperations.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                try {
-                    headFileWriter.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(FileOperations.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+       
+        
 }
 }
