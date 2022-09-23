@@ -11,7 +11,6 @@ import SIG.view.InvoiceFrame;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -45,7 +44,8 @@ public class FileOperations {
         int result;
         ArrayList<sigHeader> invArray = new ArrayList<>();
   
-            
+            JOptionPane.showMessageDialog(frame, "Please insert Headers File then Lines File"); 
+
             JFileChooser file = new JFileChooser();
             do{//do not close till the user chooses the right file
                result = file.showOpenDialog(frame);
