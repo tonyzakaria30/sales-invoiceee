@@ -23,9 +23,7 @@ import javax.swing.JOptionPane;
 public class FileOperations {
     private InvoiceFrame frame;
     //headerFile name
-    private String headerPath="Invoice_Header.csv";
-    //items file name
-    private String itemPath="Invoice_Line.csv";
+
 
 
     public FileOperations(InvoiceFrame frame) {
@@ -37,16 +35,17 @@ public class FileOperations {
     
 
  public ArrayList<sigHeader> readFile(){
-        File headerFile = null;
-        File itemFile = null;
+     String headerPath;
+    //items file name
+     String itemPath;
+        File headerFile ;
+        File itemFile;
         List<String> headerLines=null;
         List<String> itemLines=null;
-        int result=0;
+        int result;
         ArrayList<sigHeader> invArray = new ArrayList<>();
-           //check if the files are in the folder, if not choose another files
-        if (headerPath == null && itemPath == null) {
-         
-            JOptionPane.showMessageDialog(frame, "Files are Not Found Please Insert New Files"); 
+  
+            
             JFileChooser file = new JFileChooser();
             do{//do not close till the user chooses the right file
                result = file.showOpenDialog(frame);
@@ -58,7 +57,7 @@ public class FileOperations {
                 }
                 else{//display an error message
                   System.out.println("Wrong Headers File Format");
-                 JOptionPane.showMessageDialog(frame, "Wrong Headers File Format");  
+                 JOptionPane.showMessageDialog(frame, "Wrong Headers File Format please insert the correct file again");  
                 }
             }
             }while(true);
@@ -79,11 +78,7 @@ public class FileOperations {
 
                 }
             }while(true);
-        } else {
-            headerFile = new File(headerPath);
-            itemFile = new File(itemPath);
-        }
-        if (headerFile != null && itemFile != null) {
+
             System.out.println(headerPath);
             System.out.println(itemPath);
 
@@ -92,16 +87,16 @@ public class FileOperations {
             try {
                 headerLines = Files.lines(Paths.get(headerPath)).collect(Collectors.toList());
             } catch (IOException ex) {
-                System.out.println("Wrong Headers File Format");
-                 JOptionPane.showMessageDialog(frame, "Wrong Headers File Format");
+                System.out.println("Wrong Headers File Path");
+                 JOptionPane.showMessageDialog(frame, "Wrong Headers File Path");
             }
 
                 
             try {
                 itemLines = Files.lines(Paths.get(itemPath)).collect(Collectors.toList());
             } catch (IOException ex) {
-                System.out.println("Wrong Items File Format");
-                 JOptionPane.showMessageDialog(frame, "Wrong Items File Format");
+                System.out.println("Wrong Items File Path");
+                 JOptionPane.showMessageDialog(frame, "Wrong Items File Patth");
             }
             
                
@@ -141,11 +136,9 @@ public class FileOperations {
                 //update the two tables
                 
                 return invArray;        
-            }
+            //}
         
-        else{
-            return null;
-        }
+        
  }
 
  
@@ -163,11 +156,15 @@ public class FileOperations {
         /*create new array of sigHeader to get the current invoices
         create two strings to stroe in them the final data as string data
         */
+       //Header file name
+        String headerPath=null;
+    //items file name
+        String itemPath=null;
         String invoices = "";
         String items = "";
-        File headerFile=null;
-        File lineFile=null;
-        int result=0;
+        File headerFile;
+        File lineFile;
+        int result;
         /*read each invoice from the header table and save it in a new line inside invoices string
         then read each item line inside the invoice and save it i a new line inside items string
         */

@@ -10,6 +10,7 @@ import SIG.model.sigItem;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -246,6 +247,7 @@ public class InvoiceFrame extends javax.swing.JFrame{
                 InvoiceFrame frame= new InvoiceFrame();
                 
                 frame.setVisible(true);
+                JOptionPane.showMessageDialog(frame, "Please insert Headers File then Lines File"); 
                 FileOperations fileOperations = new FileOperations(frame);
                 ArrayList<sigHeader> inv= fileOperations.readFile();
                 frame.setInvoices(inv);
