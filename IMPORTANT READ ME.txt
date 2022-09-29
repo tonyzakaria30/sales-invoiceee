@@ -1,6 +1,0 @@
-I have been working on this project from 12/9/2022 and this is the far
-as I can go with this project it's too hard considering what we have been 
-taught through the java course.
-I hope it is good enough despite i am not a CS student as my studies was
-in the mechanical engineering field and a diploma in the embedded systems
-with C programming skills.
